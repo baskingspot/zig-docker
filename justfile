@@ -36,7 +36,7 @@ lint:
     hadolint Dockerfile
     docker buildx bake --print >/dev/null
     nix fmt -- --ci
-    oxfmt --check README.md AGENTS.md
+    oxfmt --check README.md AGENTS.md .github
     actionlint
     zizmor .
     just --fmt --check
@@ -45,7 +45,7 @@ lint:
 [group("lint")]
 fmt:
     nix fmt
-    oxfmt README.md AGENTS.md
+    oxfmt README.md AGENTS.md .github
     just --fmt
 
 [doc("Everything CI runs: the image check and lint")]
