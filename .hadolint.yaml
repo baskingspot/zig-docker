@@ -1,0 +1,9 @@
+# DL3018 wants every apk package pinned. The one apk add is in the discarded
+# downloader stage: those packages never reach the final image.
+ignored:
+  - DL3018
+# DL4006 wants `set -o pipefail` before a RUN with a pipe. The one pipe builds
+# the mirror list in `MIRRORS=$(shuf ... | sed ...)`; a failed pipe leaves a
+# short or empty list, and the build then falls through to the ziglang.org
+# fallback, which fails the build if it cannot verify a tarball.
+  - DL4006
