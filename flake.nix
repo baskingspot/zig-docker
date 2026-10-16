@@ -1,30 +1,36 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.follows = "baskingspot/flake-parts";
+    baskingspot = {
+      url = "github:baskingspot/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    inputs@{
-      flake-parts,
-      ...
-    }:
+    inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "aarch64-darwin"
+      imports = with inputs.baskingspot.flakeModules; [
+        base
+        docker
+        shell
       ];
 
       perSystem =
-        { pkgs, ... }:
+        { pkgs, config, ... }:
         {
           devShells.default = pkgs.mkShell {
-            packages = with pkgs; [
-              actionlint
+            inputsFrom = with config.devShells; [
+              base
               docker
-              pinact
-              zizmor
+              shell
+            ];
+
+            # Modules carry only their own language's tools, so the Markdown
+            # formatter lives here.
+            packages = with pkgs; [
+              oxfmt
             ];
           };
         };
