@@ -1,22 +1,25 @@
-# Zig Docker Images
+<h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/static/logo-dark.svg">
+    <img src="docs/static/logo.svg" alt="zig-docker" height="48">
+  </picture>
+</h1>
 
-Unofficial Docker images for the [Zig programming language](https://ziglang.org/) compiler.
+Docker images for the Zig compiler, verified against the Zig Software Foundation's signing key.
 
-Published to GitHub Container Registry at `ghcr.io/mattrobenolt/zig`.
+Unofficial images, published to `ghcr.io/baskingspot/zig` for `linux/amd64` and `linux/arm64`. The build runs weekly and on changes to `Dockerfile`, `docker-bake.hcl`, or `build.yml`.
 
 ## Images
 
-- **Chainguard**: `ghcr.io/mattrobenolt/zig:0.17.0` or `ghcr.io/mattrobenolt/zig:0.17.0-chainguard`
-- **Alpine**: `ghcr.io/mattrobenolt/zig:0.17.0-alpine`
+- `ghcr.io/baskingspot/zig:0.17.0` and `ghcr.io/baskingspot/zig:0.17.0-chainguard`: built on `cgr.dev/chainguard/static:latest`.
+- `ghcr.io/baskingspot/zig:0.17.0-alpine`: built on `alpine:3`.
 
-Versions `0.15.2` and `0.16.0` are also published with the same tag suffixes.
-
-Both support `linux/amd64` and `linux/arm64`.
+Zig `0.15.2` and `0.16.0` are published with the same tag suffixes.
 
 ## Usage
 
 ```dockerfile
-FROM ghcr.io/mattrobenolt/zig:0.17.0 AS builder
+FROM ghcr.io/baskingspot/zig:0.17.0 AS builder
 WORKDIR /app
 COPY . .
 RUN zig build -Doptimize=ReleaseFast
@@ -28,8 +31,22 @@ ENTRYPOINT ["myapp"]
 
 ## Security
 
-Images are built following [Zig's documented best practices](https://ziglang.org/download/community-mirrors/). All downloads are cryptographically verified using minisign against the Zig Software Foundation's public key.
+The `downloader` stage fetches Zig from the [community mirrors](https://ziglang.org/download/community-mirrors/) and falls back to ziglang.org. The tarball is verified with minisign against the Zig Software Foundation's public key before it is copied into the image.
+
+## Work on it
+
+```sh
+just ci
+```
+
+`nix develop` provides the toolchain. `just test` builds the images for the host architecture, loads them into the local docker daemon, and runs `zig version` inside each one. `just` lists the recipes.
 
 ## License
 
-MIT License. See [LICENSE](LICENSE).
+MIT. See `LICENSE`. The logo files in `docs/static/` are baskingspot marks and are not covered by it. See `docs/static/LICENSE`.
+
+## How it's made
+
+Built with LLM assistance. [How, in detail](https://github.com/baskingspot/.github/blob/main/docs/AI.md).
+
+<a href="https://github.com/baskingspot"><img src="https://raw.githubusercontent.com/baskingspot/.github/main/brand/assets/badge.svg" alt="baskingspot" height="24"></a>
