@@ -87,7 +87,7 @@ RUN set -eux; \
 # Final stage - parameterized by base image
 FROM ${BASE_IMAGE} AS final
 
-LABEL org.opencontainers.image.source="https://github.com/mattrobenolt/zig-docker"
+LABEL org.opencontainers.image.source="https://github.com/baskingspot/zig-docker"
 COPY --from=downloader /usr/local/zig /usr/local/zig
 ENV PATH="/usr/local/zig:${PATH}"
 CMD ["zig", "version"]

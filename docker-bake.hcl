@@ -1,7 +1,7 @@
 variable "ZIG_VERSION" {}
 
 variable "REGISTRY" {
-  default = "ghcr.io/mattrobenolt/zig"
+  default = "ghcr.io/baskingspot/zig"
 }
 
 group "default" {
