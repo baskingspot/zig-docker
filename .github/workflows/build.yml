@@ -8,10 +8,16 @@ on:
   push:
     branches:
       - main
+    paths:
+      - Dockerfile
+      - docker-bake.hcl
+      - .github/workflows/build.yml
+
+permissions: {}
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     permissions:
       contents: read
       packages: write
