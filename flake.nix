@@ -30,7 +30,6 @@
             # Modules carry only their own language's tools, so the Markdown
             # formatter lives here.
             packages = with pkgs; [
-              oxfmt
             ];
           };
         };
