@@ -16,7 +16,7 @@ target "alpine" {
     "${REGISTRY}:${ZIG_VERSION}-alpine"
   ]
   args = {
-    BASE_IMAGE  = "alpine:3@sha256:294b683cb724975bec92580e1e685676bd4b50bda910ddb8c51d4cabeaec77e6"
+    BASE_IMAGE  = "alpine:3@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a"
     ZIG_VERSION = "${ZIG_VERSION}"
   }
 }
@@ -30,7 +30,7 @@ target "chainguard" {
     "${REGISTRY}:${ZIG_VERSION}-chainguard"
   ]
   args = {
-    BASE_IMAGE  = "cgr.dev/chainguard/static:latest@sha256:fe55470f22d3259488d9d3739168d8f04da67755f0b69382bc26eda4a7d3d327"
+    BASE_IMAGE  = "cgr.dev/chainguard/static:latest@sha256:c12f0107f8afb0bbc1b0eff96ff8675e85a10c6083d039b777c51fef5c27420f"
     ZIG_VERSION = "${ZIG_VERSION}"
   }
 }
