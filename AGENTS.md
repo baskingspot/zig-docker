@@ -4,7 +4,7 @@ Working notes for AI coding agents in zig-docker.
 
 ## What this is
 
-Docker images for the Zig compiler. `Dockerfile` downloads Zig from the community mirrors and verifies the tarball with minisign against the Zig Software Foundation's public key. `docker-bake.hcl` defines two targets, `chainguard` and `alpine`, over that one Dockerfile. `.github/workflows/build.yml` builds both for `linux/amd64` and `linux/arm64` and publishes them to `ghcr.io/baskingspot/zig`.
+Docker images for the Zig compiler. `Dockerfile` downloads Zig from `zig.baskingspot.dev`, the org's mirror, and verifies the tarball with minisign against the Zig Software Foundation's public key. `docker-bake.hcl` defines two targets, `chainguard` and `alpine`, over that one Dockerfile. `.github/workflows/build.yml` builds both for `linux/amd64` and `linux/arm64` and publishes them to `ghcr.io/baskingspot/zig`.
 
 ## Environment
 

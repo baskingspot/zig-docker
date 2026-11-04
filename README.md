@@ -31,7 +31,7 @@ ENTRYPOINT ["myapp"]
 
 ## Security
 
-The `downloader` stage fetches Zig from the [community mirrors](https://ziglang.org/download/community-mirrors/) and falls back to ziglang.org. The tarball is verified with minisign against the Zig Software Foundation's public key before it is copied into the image.
+The `downloader` stage fetches Zig from `zig.baskingspot.dev`, the org's pull-through cache in front of the [community mirrors](https://ziglang.org/download/community-mirrors/). The tarball is verified with minisign against the Zig Software Foundation's public key before it is copied into the image, and the signature's trusted comment must name the tarball, so a mirror cannot swap in another build.
 
 ## Work on it
 
