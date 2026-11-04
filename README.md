@@ -11,15 +11,15 @@ Unofficial images, published to `ghcr.io/baskingspot/zig` for `linux/amd64` and 
 
 ## Images
 
-- `ghcr.io/baskingspot/zig:0.17.0` and `ghcr.io/baskingspot/zig:0.17.0-chainguard`: built on `cgr.dev/chainguard/static:latest`.
-- `ghcr.io/baskingspot/zig:0.17.0-alpine`: built on `alpine:3`.
+- `ghcr.io/baskingspot/zig:0.17.1` and `ghcr.io/baskingspot/zig:0.17.1-chainguard`: built on `cgr.dev/chainguard/static:latest`.
+- `ghcr.io/baskingspot/zig:0.17.1-alpine`: built on `alpine:3`.
 
 Zig `0.15.2` and `0.16.0` are published with the same tag suffixes.
 
 ## Usage
 
 ```dockerfile
-FROM ghcr.io/baskingspot/zig:0.17.0 AS builder
+FROM ghcr.io/baskingspot/zig:0.17.1 AS builder
 WORKDIR /app
 COPY . .
 RUN zig build -Doptimize=ReleaseFast

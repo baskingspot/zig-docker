@@ -8,7 +8,7 @@ default:
 
 [doc("Build ZIG_VERSION for the host architecture, load both base images into the local docker daemon, and check `zig version` inside each image")]
 [group("test")]
-test ZIG_VERSION="0.17.0":
+test ZIG_VERSION="0.17.1":
     #!/usr/bin/env bash
     set -euo pipefail
     case "$(uname -m)" in
