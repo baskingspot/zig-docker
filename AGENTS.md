@@ -21,6 +21,6 @@ just ci
 ## Conventions
 
 - Images are published only by `build.yml` in CI. Do not `docker push`, and do not run the publishing workflow by hand.
-- The Zig version list lives in the `build.yml` matrix and in the README. Add or drop a version in both.
+- The Zig version list lives in the `build.yml` matrix, the README's images and usage, and the justfile's `test` default. Edit all three.
 - The tag scheme lives in `docker-bake.hcl`: `${REGISTRY}:${ZIG_VERSION}` plus the `-chainguard` and `-alpine` suffixes. `REGISTRY` changes only when the registry moves.
 - Commits are one line, `area: summary`, and signed.
