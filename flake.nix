@@ -28,8 +28,10 @@
             ];
 
             # Modules carry only their own language's tools, so the Markdown
-            # formatter lives here.
+            # formatter lives here. yq reads the workflow matrix in
+            # `just check-versions`.
             packages = with pkgs; [
+              yq-go
             ];
           };
         };
